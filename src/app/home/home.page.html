@@ -1,14 +1,45 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-toolbar color="danger">
+    <ion-title >NoDO list</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">What should be done?</ion-label>
+      <ion-input type="text"  autofocus="true" [(ngModel)]="todoTitle"  (keyup.enter)="addTodo()"></ion-input>
+      <ion-button slot="end" fill="clear" style="zoom:1.5;" color="danger" (click)="addTodo()"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></ion-button>
+    </ion-item>
+  
+    <ion-item *ngFor="let todo of uncopletedTodos; let i = index">
+      <ion-checkbox slot="start" [(ngModel)]="todo.done" color="danger" (ionChange)="checkingTodo(i)"></ion-checkbox>
+      <ion-label>{{todo.title}}</ion-label>
+      <ion-button fill="clear" color="dark" (click)="deleteTodo(todo)" slot="end">
+        <ion-icon ios="ios-close" md="md-close" ></ion-icon>
+      </ion-button>
+    </ion-item>
+
+
+    <ion-title class="line" >Completed tasks</ion-title>
+
+    <div class="completed-todo-items" *ngFor="let compTodo of completedTodos; let i = index">
+      <ion-item>
+        <ion-label class="completed-todo-text">{{compTodo.title}}</ion-label>
+        <ion-checkbox disabled  slot="start" [(ngModel)]="compTodo.done" color="danger" (ionChange)="checkingTodo(i)"></ion-checkbox>
+        <ion-button fill="clear" color="medium" (click)="deleteTodo(compTodo)" slot="end">
+            <ion-icon ios="ios-close" md="md-close" ></ion-icon>
+          </ion-button>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <!-- <div class="clear"><ion-icon class="trash-icon" ios="ios-trash" md="md-trash" style="zoom:2.5;" color="medium" ></ion-icon></div> -->
+
+ 
+
+
+  
 </ion-content>
