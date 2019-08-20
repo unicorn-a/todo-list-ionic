@@ -28,7 +28,7 @@
     <div class="completed-todo-items" *ngFor="let compTodo of completedTodos; let i = index">
       <ion-item>
         <ion-label class="completed-todo-text">{{compTodo.title}}</ion-label>
-        <ion-checkbox disabled  slot="start" [(ngModel)]="compTodo.done" color="danger" (ionChange)="checkingTodo(i)"></ion-checkbox>
+        <ion-checkbox  slot="start" [(ngModel)]="compTodo.done" color="danger" (ionChange)="checkingTodo(i)"></ion-checkbox>
         <ion-button fill="clear" color="medium" (click)="deleteTodo(compTodo)" slot="end">
             <ion-icon ios="ios-close" md="md-close" ></ion-icon>
           </ion-button>
@@ -36,8 +36,7 @@
     </div>
   </ion-list>
 
-  <!-- <div class="clear"><ion-icon class="trash-icon" ios="ios-trash" md="md-trash" style="zoom:2.5;" color="medium" ></ion-icon></div> -->
-
+  
  
 
 

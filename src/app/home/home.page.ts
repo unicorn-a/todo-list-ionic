@@ -28,7 +28,7 @@ export class HomePage {
 
     //если ничего не введено или введены только пробелы - не добавляем новый элемент в список
     if(this.todoTitle.trim().length === 0) {
-      console.log('no enter todo-item-',this.todoTitle)
+      // console.log('no enter todo-item-',this.todoTitle)
       return;
     }
     //добавляем новый элемент в список всех элементов и очищаем поле - input
@@ -46,7 +46,10 @@ export class HomePage {
   }
 
   get uncopletedTodos() {
-    return this.todos.filter((todo: Todo) => !todo.done);
+    return this.todos.filter(function(todo: Todo){
+
+      return !todo.done;
+    });
   }
 
   get completedTodos() {
